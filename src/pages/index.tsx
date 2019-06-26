@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Link from 'gatsby-link';
 
 import { Layout } from '../components/layout';
@@ -15,7 +15,9 @@ interface IndexPageProps {
 	};
 }
 
-export default function(props: IndexPageProps) {
+export default (props: IndexPageProps) => {
+	const [count, setCount] = useState(0);
+
 	return (
 		<Layout>
 			<h1>Hi people</h1>
@@ -24,11 +26,17 @@ export default function(props: IndexPageProps) {
 					Welcome to your new <strong>{props.data.site.siteMetadata.title}</strong> site.
 				</p>
 				<p>Now go build something great.</p>
-				<Link to="/page-2/">Go to page 2</Link>
+				<div>
+					<button onClick={() => setCount(count - 1)}>-</button>
+					<span>{count}</span>
+					<button onClick={() => setCount(count + 1)}>+</button>
+				</div>
+				<Link to="/page-2/">Go to page {count * 20}</Link>
 			</div>
+			<p>{count * count}</p>
 		</Layout>
 	);
-}
+};
 
 export const pageQuery = graphql`
 	query IndexQuery {
