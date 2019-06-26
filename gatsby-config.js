@@ -3,7 +3,8 @@ module.exports = {
 		title: `KozakBartosz.pl`,
 	},
 	plugins: [
-		`gatsby-plugin-react-helmet`,
 		`gatsby-plugin-typescript`,
+		`gatsby-plugin-react-helmet`,
+		`gatsby-plugin-styled-components`,
 	],
 };
