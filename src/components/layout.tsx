@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import { Link } from '@reach/router';
-import { SiteMetadata } from '../meta';
+import Link from 'gatsby-link';
+import SiteMetadata from './meta';
+import Transition from './transition';
 
 const Header = () => {
 	const [count, setCount] = useState(0);
@@ -12,7 +13,7 @@ const Header = () => {
 				background: 'rebeccapurple',
 				marginBottom: '1.45rem',
 			}}>
-			<div
+			<Top
 				style={{
 					margin: '0 auto',
 					maxWidth: 960,
@@ -38,18 +39,22 @@ const Header = () => {
 					</span>
 					<button onClick={() => setCount(count + 1)}>+</button>
 				</h1>
-			</div>
+				<Nav>
+					<Link to="/">Go back to the homepage</Link>
+					<Link to="/page-2/">Go to page</Link>
+				</Nav>
+			</Top>
 		</div>
 	);
 };
 
-export const Layout = (props: { children: React.ReactNode }) => (
+const Layout = (props: { children: React.ReactNode; location: object }) => (
 	<>
-		<SiteMetadata pathname="/" />
+		<SiteMetadata />
 		<GlobalStyle />
 		<Header />
 		<Container>
-			{props.children}
+			<Transition location={location}>{props.children}</Transition>
 			<Footer>Copyright ©2019 by KozakBartosz.pl</Footer>
 		</Container>
 	</>
@@ -75,7 +80,22 @@ const Footer = styled.footer`
 	padding: 20px 0;
 `;
 
+const Top = styled.div`
+	display: flex;
+	flex-direction: row;
+	color: #fff;
+`;
+const Nav = styled.nav`
+	padding: 2px 10px;
+	a {
+		padding: 10px;
+		display: inline-block;
+		color: #fff;
+	}
+`;
 const Container = styled.div`
 	margin: 0 auto;
 	max-width: 1000px;
 `;
+
+export default Layout;

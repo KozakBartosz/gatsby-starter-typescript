@@ -5,11 +5,11 @@ import { Helmet } from 'react-helmet';
 const title = 'Kozak Bartosz - Portfolio';
 const siteUrl = 'a';
 
-export const SiteMetadata = (pathname: string) => {
+const SiteMetadata = () => {
 	return (
 		<Helmet defer={false} defaultTitle={title} titleTemplate={`%s | ${title}`}>
 			<html lang="pl" />
-			<link rel="canonical" href={`${siteUrl}${pathname}`} />
+			<link rel="canonical" href={`${siteUrl}`} />
 			<meta name="docsearch:version" content="2.0" />
 			<meta
 				name="viewport"
@@ -29,3 +29,5 @@ export const SiteMetadata = (pathname: string) => {
 		</Helmet>
 	);
 };
+
+export default SiteMetadata;

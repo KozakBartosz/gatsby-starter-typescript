@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'gatsby-link';
 
-import { Layout } from '../components/layout';
+// import { Layout } from '../components/layout';
 
 // Please note that you can use https://github.com/dotansimha/graphql-code-generator
 // to generate all types from graphQL schema
@@ -19,7 +19,7 @@ export default (props: IndexPageProps) => {
 	const [count, setCount] = useState(0);
 
 	return (
-		<Layout>
+		<>
 			<h1>Hi people</h1>
 			<div>
 				<p>
@@ -34,7 +34,7 @@ export default (props: IndexPageProps) => {
 				<Link to="/page-2/">Go to page {count * 20}</Link>
 			</div>
 			<p>{count * count}</p>
-		</Layout>
+		</>
 	);
 };
 

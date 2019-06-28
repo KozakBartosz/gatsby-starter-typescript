@@ -10,10 +10,12 @@
 		"babel-plugin-styled-components": "^1.10.2",
 		"gatsby": "^2.10.5",
 		"gatsby-link": "^2.2.0",
+		"gatsby-plugin-layout": "^1.1.0",
 		"gatsby-plugin-react-helmet": "^3.1.0",
 		"gatsby-plugin-styled-components": "^3.1.0",
 		"gatsby-plugin-typescript": "^2.1.0",
 		"react-helmet": "^5.2.1",
+		"react-transition-group": "^4.1.1",
 		"styled-components": "^4.3.2"
 	},
 	"keywords": [
@@ -29,6 +31,7 @@
 	},
 	"devDependencies": {
 		"@types/react-helmet": "^5.0.8",
+		"@types/react-transition-group": "^2.9.2",
 		"@types/styled-components": "^4.1.16",
 		"prettier": "^1.18.2",
 		"react-addons-test-utils": "^15.6.2",
