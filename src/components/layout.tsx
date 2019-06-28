@@ -4,8 +4,8 @@ import Link from 'gatsby-link';
 import SiteMetadata from './meta';
 import Transition from './transition';
 
-const Header = () => {
-	const [count, setCount] = useState(0);
+const Header = (props: { pathname: string }) => {
+	// const [count, setCount] = useState(0);
 
 	return (
 		<Top>
@@ -17,18 +17,8 @@ const Header = () => {
 							color: 'white',
 							textDecoration: 'none',
 						}}>
-						Gatsby
+						KozakBartosz.pl{props.pathname}
 					</Link>
-
-					<button onClick={() => setCount(count - 1)}>-</button>
-					<span
-						style={{
-							color: 'white',
-							textDecoration: 'none',
-						}}>
-						{count}
-					</span>
-					<button onClick={() => setCount(count + 1)}>+</button>
 				</h1>
 				<Nav>
 					<Link to="/" activeClassName="link--active">
@@ -46,11 +36,11 @@ const Header = () => {
 	);
 };
 
-const Layout = (props: { children: React.ReactNode; location: object }) => (
+const Layout = (props: { children: React.ReactNode; location: { pathname: string } }) => (
 	<>
 		<SiteMetadata />
 		<GlobalStyle />
-		<Header />
+		<Header pathname={props.location.pathname} />
 		<Container>
 			<Transition location={props.location}>{props.children}</Transition>
 			<Footer>Copyright ©2019 by KozakBartosz.pl</Footer>
@@ -78,13 +68,16 @@ const Footer = styled.footer`
 	padding: 20px 0;
 `;
 
-const Top = styled.div`
+const Top = styled.header`
 	display: flex;
 	flex-direction: row;
 	color: #fff;
 	background: rgb(50, 104, 137);
 	background: linear-gradient(171deg, rgba(50, 104, 137, 1) 0%, rgba(224, 0, 130, 1) 100%);
 	margin-bottom: 20px;
+	position: sticky;
+	z-index: 100;
+	top: -77px;
 `;
 const Nav = styled.nav`
 	padding: 10px 10px 0;
