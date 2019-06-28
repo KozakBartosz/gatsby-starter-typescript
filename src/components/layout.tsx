@@ -8,21 +8,9 @@ const Header = () => {
 	const [count, setCount] = useState(0);
 
 	return (
-		<div
-			style={{
-				background: 'rebeccapurple',
-				marginBottom: '1.45rem',
-				position: 'sticky',
-				top: 0,
-				zIndex: 100,
-			}}>
-			<Top
-				style={{
-					margin: '0 auto',
-					maxWidth: 960,
-					padding: '1.45rem 1.0875rem',
-				}}>
-				<h1 style={{ margin: 0 }}>
+		<Top>
+			<Container>
+				<h1 style={{ margin: 0, textAlign: 'center', padding: '20px' }}>
 					<Link
 						to="/"
 						style={{
@@ -43,12 +31,18 @@ const Header = () => {
 					<button onClick={() => setCount(count + 1)}>+</button>
 				</h1>
 				<Nav>
-					<Link to="/">Home</Link>
-					<Link to="/oferta/">Oferta</Link>
-					<Link to="/kontakt/">Kontakt</Link>
+					<Link to="/" activeClassName="link--active">
+						Home
+					</Link>
+					<Link to="/oferta/" activeClassName="link--active">
+						Oferta
+					</Link>
+					<Link to="/kontakt/" activeClassName="link--active">
+						Kontakt
+					</Link>
 				</Nav>
-			</Top>
-		</div>
+			</Container>
+		</Top>
 	);
 };
 
@@ -88,18 +82,30 @@ const Top = styled.div`
 	display: flex;
 	flex-direction: row;
 	color: #fff;
+	background: rgb(50, 104, 137);
+	background: linear-gradient(171deg, rgba(50, 104, 137, 1) 0%, rgba(224, 0, 130, 1) 100%);
+	margin-bottom: 20px;
 `;
 const Nav = styled.nav`
-	padding: 2px 10px;
+	padding: 10px 10px 0;
+	text-align: center;
 	a {
-		padding: 10px;
+		padding: 10px 25px;
 		display: inline-block;
 		color: #fff;
+		text-decoration: none;
+		transition: all 250ms ease-in-out;
+	}
+	a.link--active {
+		display: inline-block;
+		color: rgba(224, 0, 130, 1);
+		background: #fff;
 	}
 `;
 const Container = styled.div`
 	margin: 0 auto;
 	max-width: 1000px;
+	padding: 0 10px;
 `;
 
 export default Layout;
