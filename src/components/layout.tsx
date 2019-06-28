@@ -54,7 +54,7 @@ const Layout = (props: { children: React.ReactNode; location: object }) => (
 		<GlobalStyle />
 		<Header />
 		<Container>
-			<Transition location={location}>{props.children}</Transition>
+			<Transition location={props.location}>{props.children}</Transition>
 			<Footer>Copyright ©2019 by KozakBartosz.pl</Footer>
 		</Container>
 	</>
