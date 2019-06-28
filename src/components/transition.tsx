@@ -1,28 +1,11 @@
 import React from 'react';
 import { TransitionGroup, Transition as ReactTransition } from 'react-transition-group';
+import styled from 'styled-components';
 
 //This variable will be responsible for our animation duration
 const timeout = 500;
 
 //This object contains basic styles for animation, but you can extend them to whatever you like. Be creative!
-const getTransitionStyles = {
-	entering: {
-		transition: `all ${timeout}ms ease-in-out`,
-		position: 'absolute',
-		opacity: 0,
-		transform: `scale(1.1)`,
-	},
-	entered: {
-		transition: `all ${timeout}ms ease-in-out`,
-		opacity: 1,
-		transform: `scale(1)`,
-	},
-	exiting: {
-		transition: `all ${timeout}ms ease-in-out`,
-		opacity: 0,
-		transform: `scale(0.9)`,
-	},
-};
 
 const Transition = (props: { children: React.ReactNode; location: { pathname: string } }) => {
 	//Destructuring props to avoid garbage this.props... in return statement
@@ -40,17 +23,53 @@ const Transition = (props: { children: React.ReactNode; location: { pathname: st
 					exit: timeout,
 				}}>
 				{//Application of the styles depending on the status of page(entering, exiting, entered) in the DOM
-				status => (
-					<div
-						style={{
-							...getTransitionStyles[status],
-						}}>
-						{props.children}
-					</div>
-				)}
+				status => <AnimationPage status={status}>{props.children}</AnimationPage>}
 			</ReactTransition>
 		</TransitionGroup>
 	);
 };
+
+// const getTransitionStyles = {
+// 	entering: {
+// 		transition: `all ${timeout}ms ease-in-out`,
+// 		position: 'absolute',
+// 		opacity: 0,
+// 		transform: `scale(1.1)`,
+// 	},
+// 	entered: {
+// 		transition: `all ${timeout}ms ease-in-out`,
+// 		opacity: 1,
+// 		transform: `scale(1)`,
+// 	},
+// 	exiting: {
+// 		transition: `all ${timeout}ms ease-in-out`,
+// 		opacity: 0,
+// 		transform: `scale(0.9)`,
+// 	},
+// };
+
+const AnimationPage = styled.div<{ status: string }>`
+	transition: all ${timeout}ms ease-in-out;
+
+	${props => {
+		if (props.status == 'entering') {
+			return `
+				position: absolute;
+				opacity: 0;
+				transform: translateY(-10px);
+			`;
+		} else if (props.status == 'entered') {
+			return `
+				opacity: 1;
+				transform: scale(1);
+			`;
+		} else if (props.status == 'exiting') {
+			return `
+				opacity: 0;
+				transform: translateY(10px);
+			`;
+		}
+	}}
+`;
 
 export default Transition;

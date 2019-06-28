@@ -12,6 +12,9 @@ const Header = () => {
 			style={{
 				background: 'rebeccapurple',
 				marginBottom: '1.45rem',
+				position: 'sticky',
+				top: 0,
+				zIndex: 100,
 			}}>
 			<Top
 				style={{
@@ -40,8 +43,9 @@ const Header = () => {
 					<button onClick={() => setCount(count + 1)}>+</button>
 				</h1>
 				<Nav>
-					<Link to="/">Go back to the homepage</Link>
-					<Link to="/page-2/">Go to page</Link>
+					<Link to="/">Home</Link>
+					<Link to="/oferta/">Oferta</Link>
+					<Link to="/kontakt/">Kontakt</Link>
 				</Nav>
 			</Top>
 		</div>

@@ -31,7 +31,7 @@ export default (props: IndexPageProps) => {
 					<span>{count}</span>
 					<button onClick={() => setCount(count + 1)}>+</button>
 				</div>
-				<Link to="/page-2/">Go to page {count * 20}</Link>
+				<Link to="/oferta/">Go to page {count * 20}</Link>
 			</div>
 			<p>{count * count}</p>
 		</>
