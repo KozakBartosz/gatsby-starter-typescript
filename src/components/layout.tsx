@@ -10,15 +10,17 @@ const Header = (props: { pathname: string }) => {
 	return (
 		<Top>
 			<Container>
-				<h1 style={{ margin: 0, textAlign: 'center', padding: '20px' }}>
+			<TopIn>
+				<h1 style={{ margin: 0, textAlign: 'center', padding: '30px 20px 30px 0' }}>
 					<Link
 						to="/"
 						style={{
 							color: 'white',
 							textDecoration: 'none',
 						}}>
-						KozakBartosz.pl{props.pathname}
+						KozakBartosz.pl
 					</Link>
+					<Small>{props.pathname}</Small>
 				</h1>
 				<Nav>
 					<Link to="/" activeClassName="link--active">
@@ -31,6 +33,7 @@ const Header = (props: { pathname: string }) => {
 						Kontakt
 					</Link>
 				</Nav>
+				</TopIn>
 			</Container>
 		</Top>
 	);
@@ -42,9 +45,15 @@ const Layout = (props: { children: React.ReactNode; location: { pathname: string
 		<GlobalStyle />
 		<Header pathname={props.location.pathname} />
 		<Container>
-			<Transition location={props.location}>{props.children}</Transition>
-			<Footer>Copyright ©2019 by KozakBartosz.pl</Footer>
+			<Main>
+				<Transition location={props.location}>{props.children}</Transition>
+			</Main>
 		</Container>
+		<Footer>
+			<Container>
+				Copyright ©2019 by KozakBartosz.pl
+			</Container>
+		</Footer>
 	</>
 );
 
@@ -54,31 +63,41 @@ const GlobalStyle = createGlobalStyle`
 		padding: 0;
 		font-family: Arial, Helvetica, sans-serif;
 		background: #fff;
+		overflow-wrap: break-word;
 	}
 
 `;
-
-const Footer = styled.footer`
+const Container = styled.div`
 	margin: 0 auto;
-	max-width: 1000px;
-	background: #000;
-	color: #fff;
-	text-align: center;
-	margin-top: 200px;
-	padding: 20px 0;
+	max-width: 1200px;
+	padding: 0 10px;
 `;
 
 const Top = styled.header`
-	display: flex;
-	flex-direction: row;
+	text-align: center;
 	color: #fff;
 	background: rgb(50, 104, 137);
 	background: linear-gradient(171deg, rgba(50, 104, 137, 1) 0%, rgba(224, 0, 130, 1) 100%);
 	margin-bottom: 20px;
 	position: sticky;
 	z-index: 100;
-	top: -77px;
+	top: -70px;
 `;
+
+const TopIn = styled.div`
+ 	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-end;
+`
+
+const Small = styled.span`
+	font-size: 11px;
+	display: block;
+	padding-top: 10px;
+`;
+
+
 const Nav = styled.nav`
 	padding: 10px 10px 0;
 	text-align: center;
@@ -95,10 +114,22 @@ const Nav = styled.nav`
 		background: #fff;
 	}
 `;
-const Container = styled.div`
+const Main = styled.main`
+	min-height: calc(100vh - 200px)
+`
+
+
+
+
+
+const Footer = styled.footer`
 	margin: 0 auto;
 	max-width: 1000px;
-	padding: 0 10px;
+	background: #000;
+	color: #fff;
+	text-align: center;
+	margin-top: 200px;
+	padding: 20px 0;
 `;
 
 export default Layout;
