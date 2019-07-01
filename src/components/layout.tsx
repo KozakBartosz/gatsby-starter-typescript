@@ -26,6 +26,9 @@ const Header = (props: { pathname: string }) => {
 					<Link to="/" activeClassName="link--active">
 						Home
 					</Link>
+					<Link to="/about" activeClassName="link--active">
+						O mnie
+					</Link>
 					<Link to="/oferta/" activeClassName="link--active">
 						Oferta
 					</Link>
