@@ -15,7 +15,7 @@ export default (data: { data: { allDatoCmsOmnie: { nodes: any[] } } }) => {
 };
 
 export const query = graphql`
-	query MyQuery {
+	query AboutQuery {
 		allDatoCmsOmnie {
 			nodes {
 				title

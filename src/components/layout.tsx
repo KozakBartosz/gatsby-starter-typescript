@@ -10,32 +10,35 @@ const Header = (props: { pathname: string }) => {
 	return (
 		<Top>
 			<Container>
-			<TopIn>
-				<h1 style={{ margin: 0, textAlign: 'center', padding: '30px 20px 30px 0' }}>
-					<Link
-						to="/"
-						style={{
-							color: 'white',
-							textDecoration: 'none',
-						}}>
-						KozakBartosz.pl
-					</Link>
-					<Small>{props.pathname}</Small>
-				</h1>
-				<Nav>
-					<Link to="/" activeClassName="link--active">
-						Home
-					</Link>
-					<Link to="/about" activeClassName="link--active">
-						O mnie
-					</Link>
-					<Link to="/oferta/" activeClassName="link--active">
-						Oferta
-					</Link>
-					<Link to="/kontakt/" activeClassName="link--active">
-						Kontakt
-					</Link>
-				</Nav>
+				<TopIn>
+					<h1 style={{ margin: 0, textAlign: 'center', padding: '30px 20px 30px 0' }}>
+						<Link
+							to="/"
+							style={{
+								color: 'white',
+								textDecoration: 'none',
+							}}>
+							KozakBartosz.pl
+						</Link>
+						<Small>{props.pathname}</Small>
+					</h1>
+					<Nav>
+						<Link to="/" activeClassName="link--active">
+							Home
+						</Link>
+						<Link to="/about" activeClassName="link--active">
+							O mnie
+						</Link>
+						<Link to="/oferta/" activeClassName="link--active">
+							Oferta
+						</Link>
+						<Link to="/blog/" activeClassName="link--active">
+							Blog
+						</Link>
+						<Link to="/kontakt/" activeClassName="link--active">
+							Kontakt
+						</Link>
+					</Nav>
 				</TopIn>
 			</Container>
 		</Top>
@@ -53,9 +56,7 @@ const Layout = (props: { children: React.ReactNode; location: { pathname: string
 			</Main>
 		</Container>
 		<Footer>
-			<Container>
-				Copyright ©2019 by KozakBartosz.pl
-			</Container>
+			<Container>Copyright ©2019 by KozakBartosz.pl</Container>
 		</Footer>
 	</>
 );
@@ -88,18 +89,17 @@ const Top = styled.header`
 `;
 
 const TopIn = styled.div`
- 	display: flex;
+	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: flex-end;
-`
+`;
 
 const Small = styled.span`
 	font-size: 11px;
 	display: block;
 	padding-top: 10px;
 `;
-
 
 const Nav = styled.nav`
 	padding: 10px 10px 0;
@@ -118,12 +118,8 @@ const Nav = styled.nav`
 	}
 `;
 const Main = styled.main`
-	min-height: calc(100vh - 200px)
-`
-
-
-
-
+	min-height: calc(100vh - 200px);
+`;
 
 const Footer = styled.footer`
 	margin: 0 auto;
