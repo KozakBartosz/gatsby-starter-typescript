@@ -1,9 +1,9 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
-export default (data: { data: { allDatoCmsAbout: { nodes: any[] } } }) => {
+export default (data: { data: { allDatoCmsOmnie: { nodes: any[] } } }) => {
 	console.log('data', data);
-	const node = data.data.allDatoCmsAbout.nodes[0];
+	const node = data.data.allDatoCmsOmnie.nodes[0];
 	// export default (data) => {
 	return (
 		<>
@@ -15,11 +15,11 @@ export default (data: { data: { allDatoCmsAbout: { nodes: any[] } } }) => {
 
 export const query = graphql`
 	query MyQuery {
-		allDatoCmsAbout {
+		allDatoCmsOmnie {
 			nodes {
+				title
 				id
 				content
-				title
 			}
 		}
 	}
