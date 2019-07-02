@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import ToHtml from '../components/html';
 
 export default (data: { data: { allDatoCmsOmnie: { nodes: any[] } } }) => {
 	console.log('data', data);
@@ -8,7 +9,7 @@ export default (data: { data: { allDatoCmsOmnie: { nodes: any[] } } }) => {
 	return (
 		<>
 			<h1>{node.title}</h1>
-			<div>{node.content}</div>
+			<ToHtml tags={node.content} />
 		</>
 	);
 };
