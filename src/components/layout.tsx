@@ -26,11 +26,8 @@ const Header = (props: { pathname: string }) => {
 						<Link to="/" activeClassName="link--active">
 							Home
 						</Link>
-						<Link to="/about" activeClassName="link--active">
+						<Link to="/about/" activeClassName="link--active">
 							O mnie
-						</Link>
-						<Link to="/oferta/" activeClassName="link--active">
-							Oferta
 						</Link>
 						<Link to="/blog/" activeClassName="link--active">
 							Blog
@@ -92,12 +89,14 @@ const Top = styled.header`
 		radial-gradient(circle at 2% 82%, rgba(32, 106, 142, 0.69), rgba(32, 106, 142, 0) 50%);
 	background-color: #fff;
 	margin-bottom: 20px;
-	position: sticky;
 	z-index: 100;
-	top: -70px;
 	transition: background ease 5s;
 	&:hover {
 		background-color: rgba(37, 164, 128, 1);
+	}
+	@media (min-width: 600px) {
+		position: sticky;
+		top: -70px;
 	}
 `;
 
