@@ -2,9 +2,9 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import ToHtml from '../components/html';
 
-export default (data: { data: { allDatoCmsOmnie: { nodes: any[] } } }) => {
+export default (data: { data: { datoCmsOmnie: { title: string; content: string } } }) => {
 	console.log('data', data);
-	const node = data.data.allDatoCmsOmnie.nodes[0];
+	const node = data.data.datoCmsOmnie;
 	// export default (data) => {
 	return (
 		<>
@@ -16,22 +16,9 @@ export default (data: { data: { allDatoCmsOmnie: { nodes: any[] } } }) => {
 
 export const query = graphql`
 	query AboutQuery {
-		allDatoCmsOmnie {
-			nodes {
-				title
-				id
-				content
-			}
+		datoCmsOmnie {
+			title
+			content
 		}
 	}
 `;
-
-// export const pageQuery = graphql`
-// query IndexQuery {
-//     site {
-//         siteMetadata {
-//             title
-//         }
-//     }
-// }
-// `;

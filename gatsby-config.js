@@ -1,3 +1,5 @@
+const path = require(`path`);
+
 module.exports = {
 	siteMetadata: {
 		title: `KozakBartosz.pl`,
@@ -19,6 +21,15 @@ module.exports = {
 				preview: false,
 				disableLiveReload: false,
 			},
-		}
+		},
+		{
+			resolve: `gatsby-source-filesystem`,
+			options: {
+				name: `images`,
+				path: path.join(__dirname, `src`, `images`),
+			},
+		},
+		`gatsby-plugin-sharp`,
+		`gatsby-transformer-sharp`,
 	],
 };
