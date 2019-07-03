@@ -5,7 +5,6 @@ import ToHtml from '../components/html';
 import styled from 'styled-components';
 
 export default (data: { data: { allDatoCmsBlog: { nodes: any } } }) => {
-	console.log('data', data);
 	const node = data.data.allDatoCmsBlog.nodes;
 	// export default (data) => {
 	return (
@@ -24,7 +23,6 @@ export default (data: { data: { allDatoCmsBlog: { nodes: any } } }) => {
 					i: any,
 				) => {
 					// Return the element. Also pass key
-					console.log('fluid', el.img);
 					return (
 						<BlogPost key={el.id}>
 							<BlogPostImg>

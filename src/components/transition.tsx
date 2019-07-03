@@ -3,7 +3,7 @@ import { TransitionGroup, Transition as ReactTransition } from 'react-transition
 import styled from 'styled-components';
 
 //This variable will be responsible for our animation duration
-const timeout = 250;
+const timeout = 300;
 
 //This object contains basic styles for animation, but you can extend them to whatever you like. Be creative!
 
@@ -49,14 +49,16 @@ const Transition = (props: { children: React.ReactNode; location: { pathname: st
 // };
 
 const AnimationPage = styled.div<{ status: string }>`
-	transition: all ${timeout}ms ease-in-out;
+	transition: transform ${timeout}ms ease, opacity ${timeout}ms ease;
+	will-change: transform, opacity;
+	transform-origin: 50% 0%;
 
 	${props => {
 		if (props.status == 'entering') {
 			return `
 				position: absolute;
 				opacity: 0;
-				transform: translateY(-10px);
+				transform: translateX(120px);
 			`;
 		} else if (props.status == 'entered') {
 			return `
@@ -66,7 +68,7 @@ const AnimationPage = styled.div<{ status: string }>`
 		} else if (props.status == 'exiting') {
 			return `
 				opacity: 0;
-				transform: translateY(10px);
+				transform: translateX(-120px);
 			`;
 		}
 	}}

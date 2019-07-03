@@ -18,7 +18,7 @@ const Header = (props: { pathname: string }) => {
 								color: 'white',
 								textDecoration: 'none',
 							}}>
-							KozakBartosz.pl
+							Example
 						</Link>
 						<Small>{props.pathname}</Small>
 					</h1>
@@ -47,11 +47,11 @@ const Layout = (props: { children: React.ReactNode; location: { pathname: string
 		<SiteMetadata />
 		<GlobalStyle />
 		<Header pathname={props.location.pathname} />
-		<Container>
-			<Main>
+		<Main>
+			<Container>
 				<Transition location={props.location}>{props.children}</Transition>
-			</Main>
-		</Container>
+			</Container>
+		</Main>
 		<Footer>
 			<Container>Copyright ©2019 by KozakBartosz.pl</Container>
 		</Footer>
@@ -127,23 +127,38 @@ const Nav = styled.nav`
 		text-decoration: none;
 		transition: all 250ms ease-in-out;
 	}
+	a:hover {
+		display: inline-block;
+		color: #fff;
+		background: rgba(255, 255, 255, 0.3);
+	}
 	a.link--active {
 		display: inline-block;
 		color: rgba(37, 164, 128, 1);
-		background: #fff;
+		background: rgba(255, 255, 255, 1);
 	}
 `;
 const Main = styled.main`
-	min-height: calc(100vh - 200px);
+	min-height: calc(100vh - 217px);
+	overflow: hidden;
+	position: relative;
 `;
 
 const Footer = styled.footer`
 	margin: 0 auto;
-	max-width: 1000px;
-	background: #000;
 	color: #fff;
+	/* background: linear-gradient(171deg, rgba(50, 104, 137, 1) 0%, rgba(224, 0, 130, 1) 100%); */
+	background: radial-gradient(
+			circle at 49% 72%,
+			rgba(107, 177, 216, 0.57),
+			rgba(107, 177, 216, 0) 50%
+		),
+		radial-gradient(circle at 25% 21%, rgba(37, 164, 128, 0.37), rgba(37, 164, 128, 0) 50%),
+		radial-gradient(circle at 76% 17%, rgba(28, 104, 173, 0.69), rgba(28, 104, 173, 0) 50%),
+		radial-gradient(circle at 99% 75%, rgba(14, 45, 134, 0.83), rgba(14, 45, 134, 0) 50%),
+		radial-gradient(circle at 2% 82%, rgba(32, 106, 142, 0.69), rgba(32, 106, 142, 0) 50%);
 	text-align: center;
-	margin-top: 200px;
+	margin-top: 20px;
 	padding: 20px 0;
 `;
 

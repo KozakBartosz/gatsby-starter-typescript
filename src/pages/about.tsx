@@ -3,7 +3,6 @@ import { graphql } from 'gatsby';
 import ToHtml from '../components/html';
 
 export default (data: { data: { datoCmsOmnie: { title: string; content: string } } }) => {
-	console.log('data', data);
 	const node = data.data.datoCmsOmnie;
 	// export default (data) => {
 	return (
