@@ -1,5 +1,3 @@
-const path = require(`path`);
-
 module.exports = {
 	siteMetadata: {
 		title: `KozakBartosz.pl`,
@@ -25,24 +23,7 @@ module.exports = {
 		{
 			resolve: `gatsby-source-filesystem`,
 			options: {
-				name: `images`,
-				path: `${__dirname}/src/images/`,
-			},
-		},
-
-		{
-			resolve: `gatsby-source-filesystem`,
-			options: {
-				name: `pages`,
-				path: `${__dirname}/src/pages/`,
-			},
-		},
-		{
-			resolve: `gatsby-source-filesystem`,
-			options: {
-				name: `data`,
-				path: `${__dirname}/src/data/`,
-				ignore: [`**/\.*`], // ignore files starting with a dot
+				path: `${__dirname}/src/data`,
 			},
 		},
 		`gatsby-plugin-sharp`,
