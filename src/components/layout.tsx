@@ -11,7 +11,7 @@ const Header = (props: { pathname: string }) => {
 		<Top>
 			<Container>
 				<TopIn>
-					<h1 style={{ margin: 0, textAlign: 'center', padding: '30px 20px 30px 0' }}>
+					<h1 style={{ margin: 0, textAlign: 'center', padding: '10px 20px 10px 0' }}>
 						<Link
 							to="/"
 							style={{
@@ -29,7 +29,7 @@ const Header = (props: { pathname: string }) => {
 						<Link to="/about/" activeClassName="link--active">
 							O mnie
 						</Link>
-						<Link to="/blog/" activeClassName="link--active">
+						<Link to="/blog/" activeClassName="link--active" partiallyActive={true}>
 							Blog
 						</Link>
 						<Link to="/kontakt/" activeClassName="link--active">
@@ -42,13 +42,14 @@ const Header = (props: { pathname: string }) => {
 	);
 };
 
-const Layout = (props: { children: React.ReactNode; location: { pathname: string } }) => (
+const Layout = (props: { children: React.ReactNode; location: { pathname: string, state: {animation?: string} } }) => (
 	<>
-		<SiteMetadata />
+		<SiteMetadata pageinfo={props.location} />
 		<GlobalStyle />
 		<Header pathname={props.location.pathname} />
 		<Main>
 			<Container>
+				{/* <h2>Animation: {JSON.stringify(props.location.state.animation, null, 2)}</h2> */}
 				<Transition location={props.location}>{props.children}</Transition>
 			</Container>
 		</Main>
@@ -65,6 +66,12 @@ const GlobalStyle = createGlobalStyle`
 		font-family: Arial, Helvetica, sans-serif;
 		background: #fff;
 		overflow-wrap: break-word;
+	}
+	a {
+		color: rgba(37, 164, 128, 1);
+	}
+	a:focus, button:focus {
+		outline: none;
 	}
 
 `;
@@ -87,16 +94,15 @@ const Top = styled.header`
 		radial-gradient(circle at 76% 17%, rgba(28, 104, 173, 0.69), rgba(28, 104, 173, 0) 50%),
 		radial-gradient(circle at 99% 75%, rgba(14, 45, 134, 0.83), rgba(14, 45, 134, 0) 50%),
 		radial-gradient(circle at 2% 82%, rgba(32, 106, 142, 0.69), rgba(32, 106, 142, 0) 50%);
-	background-color: #fff;
+	/* background-color: #fff; */
+	background-color: rgba(37, 164, 128, 1);
 	margin-bottom: 20px;
 	z-index: 100;
 	transition: background ease 5s;
-	&:hover {
-		background-color: rgba(37, 164, 128, 1);
-	}
 	@media (min-width: 600px) {
 		position: sticky;
-		top: -70px;
+		top: 0px;
+		/* top: -70px; */
 	}
 `;
 
@@ -139,7 +145,7 @@ const Nav = styled.nav`
 	}
 `;
 const Main = styled.main`
-	min-height: calc(100vh - 217px);
+	min-height: calc(100vh - 178px);
 	overflow: hidden;
 	position: relative;
 `;
@@ -157,6 +163,7 @@ const Footer = styled.footer`
 		radial-gradient(circle at 76% 17%, rgba(28, 104, 173, 0.69), rgba(28, 104, 173, 0) 50%),
 		radial-gradient(circle at 99% 75%, rgba(14, 45, 134, 0.83), rgba(14, 45, 134, 0) 50%),
 		radial-gradient(circle at 2% 82%, rgba(32, 106, 142, 0.69), rgba(32, 106, 142, 0) 50%);
+	background-color: rgba(37, 164, 128, 1);
 	text-align: center;
 	margin-top: 20px;
 	padding: 20px 0;

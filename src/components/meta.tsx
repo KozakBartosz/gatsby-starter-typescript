@@ -2,12 +2,13 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet';
 // import { graphql, useStaticQuery } from 'gatsby';
 
-const title = 'Kozak Bartosz - Portfolio';
+const title = 'Example';
 const siteUrl = 'a';
 
-const SiteMetadata = () => {
+const SiteMetadata = (props: { pageinfo: {pathname: string} }) => {
+	// console.log('location: ', props.pageinfo.pathname)
 	return (
-		<Helmet defer={false} defaultTitle={title} titleTemplate={`%s | ${title}`}>
+		<Helmet defer={false} defaultTitle={title+" "+props.pageinfo.pathname} titleTemplate={`%s | ${title}`}>
 			<html lang="pl" />
 			<link rel="canonical" href={`${siteUrl}`} />
 			<meta name="docsearch:version" content="2.0" />
@@ -18,7 +19,7 @@ const SiteMetadata = () => {
 
 			<meta property="og:url" content={siteUrl} />
 			<meta property="og:type" content="website" />
-			<meta property="og:locale" content="en" />
+			<meta property="og:locale" content="pl" />
 			<meta property="og:site_name" content={title} />
 			<meta property="og:image" content="/assets/icon.png" />
 			<meta property="og:image:width" content="512" />
