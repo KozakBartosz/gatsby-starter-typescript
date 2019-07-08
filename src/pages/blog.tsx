@@ -3,6 +3,7 @@ import { graphql, Link } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
 import ToHtml from '../components/html';
 import styled from 'styled-components';
+import Helmet from 'react-helmet';
 
 type DataNode = {
 	id: string;
@@ -16,9 +17,12 @@ type BlogData = { data: { allDatoCmsBlog: { nodes: DataNode[] } } }
 
 export default (data: BlogData) => {
 	const node = data.data.allDatoCmsBlog.nodes;
+
+	
 	// export default (data) => {
 	return (
 		<>
+			<Helmet title="Blog" />
 			<h1>Blog</h1>
 			{node.map((el) => (
 				<BlogPost key={el.id}>

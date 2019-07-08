@@ -8,9 +8,9 @@ const siteUrl = 'a';
 const SiteMetadata = (props: { pageinfo: {pathname: string} }) => {
 	// console.log('location: ', props.pageinfo.pathname)
 	return (
-		<Helmet defer={false} defaultTitle={title+" "+props.pageinfo.pathname} titleTemplate={`%s | ${title}`}>
+		<Helmet defer={false} defaultTitle={title} titleTemplate={`%s | ${title}`}>
 			<html lang="pl" />
-			<link rel="canonical" href={`${siteUrl}`} />
+			<link rel="canonical" href={`${siteUrl}`} />	
 			<meta name="docsearch:version" content="2.0" />
 			<meta
 				name="viewport"

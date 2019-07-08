@@ -3,6 +3,8 @@ import { graphql } from 'gatsby';
 import Img, { FluidObject, FixedObject } from 'gatsby-image';
 import ToHtml from '../components/html';
 import styled from 'styled-components';
+import Helmet from 'react-helmet';
+import { Gimg } from '../components/Image';
 
 type DataNode = {
 	datoCmsBlog: {
@@ -12,19 +14,21 @@ type DataNode = {
 	}
 }
 
-
 export default (data: {data: DataNode}) => {
-    console.log("blogdata", data);
+    console.log("blog data", data);
 	const node = data.data.datoCmsBlog;
+
+	
 	// export default (data) => {
-	return (
-		<>
+		return (
+			<>
+			<Helmet title={`Blog > ${node.title}`} />
 			{(() => (
 				node.img 
 				? <Banner>
-					<Img fixed={node.img.fixed} durationFadeIn={1050} fadeIn={true} loading="lazy" placeholderStyle={{filter: "blur(20px)"}} />
+					<Gimg fixed={node.img.fixed} />
 				  </Banner> 
-				: 'Brak fotki'))()}
+				: 'No img'))()}
 			<h1>{node.title}</h1>
 			<ToHtml tags={node.content} />
 		</>
@@ -40,7 +44,6 @@ export default (data: {data: DataNode}) => {
 // 			  ...GatsbyDatoCmsFixed_tracedSVG
 // 		  }
 // 	  }
-	  
 //     }
 // }
 
