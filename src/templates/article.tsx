@@ -47,7 +47,7 @@ export default (data: {data: DataNode}) => {
 //     }
 // }
 
-const Banner =styled.div`
+const Banner = styled.div`
 	transition: transform 1000ms cubic-bezier(.15,.76,.12,1), opacity 1000ms ease;
 	.animationPage--entering & {
 		transform: scale(2)
@@ -55,7 +55,7 @@ const Banner =styled.div`
 	.animationPage--entered & {
 		transform: scale(1)
 	}
-`
+`;
 // ...GatsbyImageSharpFixed
 
 export const query = graphql`

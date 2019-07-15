@@ -1,3 +1,6 @@
+
+
+
 module.exports = {
 	siteMetadata: {
 		title: `Example`,

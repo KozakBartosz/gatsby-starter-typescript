@@ -4,6 +4,7 @@ import Img, { FluidObject } from 'gatsby-image';
 import ToHtml from '../components/html';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
+import { Gimg } from '../components/Image';
 
 type DataNode = {
 	id: string;
@@ -28,7 +29,7 @@ export default (data: BlogData) => {
 				<BlogPost key={el.id}>
 					<BlogPostImg>
 						<Link to={"/blog/"+el.adres} state={{ animation: "zoom" }}>
-							{(() => (el.img ? <Img fluid={el.img.fluid} durationFadeIn={1000} loading="lazy" /> : 'Brak fotki'))()}
+							{(() => (el.img ? <Gimg fluid={el.img.fluid} durationFadeIn={1000} loading="lazy" /> : 'Brak fotki'))()}
 						</Link>
 					</BlogPostImg>
 

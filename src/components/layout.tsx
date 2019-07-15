@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import Link from 'gatsby-link';
-import SiteMetadata from './meta';
+// import SiteMetadata from './meta';
+import SiteMetadata from './metadato';
 import Transition from './transition';
 
 const Header = (props: { pathname: string }) => {
@@ -44,6 +45,7 @@ const Header = (props: { pathname: string }) => {
 
 const Layout = (props: { children: React.ReactNode; location: { pathname: string, state: {animation?: string} } }) => (
 	<>
+		{console.log("props: ",props)}
 		<SiteMetadata pageinfo={props.location} />
 		<GlobalStyle />
 		<Header pathname={props.location.pathname} />
@@ -51,7 +53,7 @@ const Layout = (props: { children: React.ReactNode; location: { pathname: string
 			<Container>
 				{/* <h2>Animation: {JSON.stringify(props.location.state.animation, null, 2)}</h2> */}
 				<Transition location={props.location}>{props.children}</Transition>
-			</Container>
+			</Container>	
 		</Main>
 		<Footer>
 			<Container>Copyright ©2019 by KozakBartosz.pl</Container>
@@ -170,3 +172,32 @@ const Footer = styled.footer`
 `;
 
 export default Layout;
+
+
+
+// export const query = graphql`
+//     query MetaQuery {
+//         datoCmsSite {
+//             globalSeo {
+//                 facebookPageUrl
+//                 siteName
+//                 titleSuffix
+//                 twitterAccount
+//                 fallbackSeo {
+//                     title
+//                     description
+//                     twitterCard
+//                 }
+//             }
+//             faviconMetaTags {
+//                 id
+//                 tags
+//             }
+//         }
+//         site {
+//             siteMetadata {
+//                 title
+//             }
+//         }
+//     }
+// `;
