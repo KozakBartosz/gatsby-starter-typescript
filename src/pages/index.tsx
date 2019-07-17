@@ -23,8 +23,11 @@ export default (data: any) => {
     return (
         <>
             {console.log("dato in index", data)}
-            <HelmetDatoCms seo={data.data.datoCmsSeoMetaTags} />
-            {/* <HelmetDatoCms favicon={data.data.site.siteMetadata.data.title} /> */}
+            
+            <HelmetDatoCms seo={data.data.datoCmsSite.faviconMetaTags}>
+                <description>{data.data.datoCmsSite.globalSeo.fallbackSeo.description}</description>
+                <title>{data.data.datoCmsSite.globalSeo.fallbackSeo.title}</title>
+            </HelmetDatoCms>
             <h1>Hi people</h1>
             <div>
                 <p>
@@ -60,11 +63,25 @@ export const query = graphql`
                 title
             }
         }
-        datoCmsSeoMetaTags {
-            ...GatsbyDatoCmsSeoMetaTags
+        datoCmsSite {
+            globalSeo {
+                facebookPageUrl
+                fallbackSeo {
+                    title
+                    twitterCard
+                    description
+                    image {
+                        id
+                    }
+                }
+            }
+            faviconMetaTags {
+                ...GatsbyDatoCmsFaviconMetaTags
+            }
         }
     }
 `;
+// ...GatsbyDatoCmsSeoMetaTags
 
 // const TemplateWrapper = (data) => (
 //   <article className="sheet">
