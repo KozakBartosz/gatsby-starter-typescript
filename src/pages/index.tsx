@@ -63,7 +63,8 @@ export default (data: any) => {
 // 	}
 // `;
 
-export const query = graphql`
+export const indexquery = graphql`
+query indexquery {
   datoCmsSite {
     globalSeo {
       facebookPageUrl
@@ -86,6 +87,8 @@ export const query = graphql`
       tags
     }
   }
+}
+
 `;
 // ...GatsbyDatoCmsSeoMetaTags
 
