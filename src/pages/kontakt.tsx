@@ -81,8 +81,8 @@ const SecondPage = () => (
 			<textarea name="message"></textarea>
 		</form>
 
-		
-		<form name="contact" method="post">
+
+		<form name="contact" method="post" netlify>
           <input type="hidden" name="form-name" value="contact" />
           <p>
             <label>Your Name: <input type="text" name="name"/></label>
