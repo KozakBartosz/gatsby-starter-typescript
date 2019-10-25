@@ -33,7 +33,8 @@ const SecondPage = () => {
 		.catch((error) => alert(error))
 	}
 
-	return (<>
+	return (
+	<>
 		<h1>Kontakt</h1>
 		<p>Welcome to page 2</p>
 	
@@ -70,10 +71,9 @@ const SecondPage = () => {
 				<button type="submit">Send</button>
 			</p>
 
-
+		</form>
 		</>
-		);	
-
-		export default SecondPage;
-	</>);
+	);	
 }
+
+export default SecondPage;
