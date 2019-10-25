@@ -1,104 +1,79 @@
 import * as React from 'react';
-import Link from 'gatsby-link';
+import { navigate } from 'gatsby-link';
 
-const SecondPage = () => (
-	<>
+
+
+function encode(data) {
+	return Object.keys(data)
+	  .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+	  .join('&')
+  }
+
+
+const SecondPage = () => {
+
+	const [state, setState] = React.useState({})
+
+	const handleChange = (e) => {
+	  setState({ ...state, [e.target.name]: e.target.value })
+	}
+  
+	const handleSubmit = (e) => {
+	  e.preventDefault()
+	  const form = e.target
+	  fetch('/', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+		body: encode({
+		  'form-name': form.getAttribute('name'),
+		  ...state,
+		}),
+	  })
+		.then(() => navigate(form.getAttribute('action')))
+		.catch((error) => alert(error))
+	}
+
+	return (<>
 		<h1>Kontakt</h1>
 		<p>Welcome to page 2</p>
-		<Link to="/">Go back to the homepage</Link>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, animi distinctio?
-			Vero sint ex deserunt quia. Quibusdam deserunt ut amet architecto voluptatibus, officia
-			nostrum temporibus nulla. Vel officia, aperiam molestias deleniti fugiat perspiciatis
-			odio laborum velit. Tempore quaerat vel dolorum, cupiditate possimus aliquid optio eius
-			provident nam iusto obcaecati aliquam dolorem quidem minima ex dignissimos laudantium
-			labore voluptatum reprehenderit quae suscipit blanditiis quam hic! Blanditiis velit
-			incidunt vitae possimus necessitatibus distinctio quaerat quidem consequuntur dolorem
-			totam ratione nostrum, ipsum eveniet, inventore dolor ipsam ab corrupti quis alias
-			tempora quam accusantium doloribus ipsa. Natus recusandae dicta distinctio suscipit! Sit
-			sed ut, error eaque quo, dolores asperiores natus molestias eligendi excepturi in quos
-			nobis rerum nisi. Neque veritatis omnis molestiae laudantium ad minima, dolorum
-			cupiditate quam. Perferendis debitis sit
-		</p>
-		<p>
-			fugit qui sint temporibus corrupti facere officiis quam itaque nemo totam est, neque,
-			consequuntur ab molestias possimus voluptatem iure id magnam numquam saepe tempore.
-			Saepe, consequatur aspernatur recusandae quis aliquid necessitatibus! Quaerat
-			repudiandae minima consectetur necessitatibus quis officia, eveniet odit dolorem
-			dignissimos repellendus ducimus quae esse unde qui sed provident ut aliquid cupiditate
-			pariatur eum facere accusamus. Veniam sint quisquam ipsa, dignissimos illo quibusdam,
-		</p>
-		<p>
-			nostrum adipisci ex minima culpa blanditiis, aliquam cumque. Corporis officia, qui
-			inventore dicta ratione enim ullam quisquam! Sapiente, ut similique aliquid incidunt
-			nihil, impedit enim porro, nisi pariatur quos repellat praesentium deleniti accusamus
-			commodi laborum magni blanditiis iste amet? Cum id ea eaque est culpa a ab porro
-			aliquam, esse aspernatur voluptas sed illo sunt maiores consequatur eum pariatur facilis
-			fugiat, error reprehenderit cumque odio fuga eius? Animi eius repellat autem earum
-			dolore, velit ut quos eos reiciendis omnis officiis nisi, reprehenderit ad consectetur
-			maxime, fuga dolor eum commodi est id placeat dignissimos et enim. Quia consectetur
-			saepe dolore dolorum accusantium voluptate, quisquam, ea nobis illum facere eveniet
-			libero?
-		</p>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, animi distinctio?
-			Vero sint ex deserunt quia. Quibusdam deserunt ut amet architecto voluptatibus, officia
-			nostrum temporibus nulla. Vel officia, aperiam molestias deleniti fugiat perspiciatis
-			odio laborum velit. Tempore quaerat vel dolorum, cupiditate possimus aliquid optio eius
-			provident nam iusto obcaecati aliquam dolorem quidem minima ex dignissimos laudantium
-			labore voluptatum reprehenderit quae suscipit blanditiis quam hic! Blanditiis velit
-			incidunt vitae possimus necessitatibus distinctio quaerat quidem consequuntur dolorem
-			totam ratione nostrum, ipsum eveniet, inventore dolor ipsam ab corrupti quis alias
-			tempora quam accusantium doloribus ipsa. Natus recusandae dicta distinctio suscipit! Sit
-			sed ut, error eaque quo, dolores asperiores natus molestias eligendi excepturi in quos
-			nobis rerum nisi. Neque veritatis omnis molestiae laudantium ad minima, dolorum
-			cupiditate quam. Perferendis debitis sit
-		</p>
-		<p>
-			fugit qui sint temporibus corrupti facere officiis quam itaque nemo totam est, neque,
-			consequuntur ab molestias possimus voluptatem iure id magnam numquam saepe tempore.
-			Saepe, consequatur aspernatur recusandae quis aliquid necessitatibus! Quaerat
-			repudiandae minima consectetur necessitatibus quis officia, eveniet odit dolorem
-			dignissimos repellendus ducimus quae esse unde qui sed provident ut aliquid cupiditate
-			pariatur eum facere accusamus. Veniam sint quisquam ipsa, dignissimos illo quibusdam,
-		</p>
-		<p>
-			nostrum adipisci ex minima culpa blanditiis, aliquam cumque. Corporis officia, qui
-			inventore dicta ratione enim ullam quisquam! Sapiente, ut similique aliquid incidunt
-			nihil, impedit enim porro, nisi pariatur quos repellat praesentium deleniti accusamus
-			commodi laborum magni blanditiis iste amet? Cum id ea eaque est culpa a ab porro
-			aliquam, esse aspernatur voluptas sed illo sunt maiores consequatur eum pariatur facilis
-			fugiat, error reprehenderit cumque odio fuga eius? Animi eius repellat autem earum
-			dolore, velit ut quos eos reiciendis omnis officiis nisi, reprehenderit ad consectetur
-			maxime, fuga dolor eum commodi est id placeat dignissimos et enim. Quia consectetur
-			saepe dolore dolorum accusantium voluptate, quisquam, ea nobis illum facere eveniet
-			libero?
-		</p>
+	
+		<form name="contact" method="post" action="/thanks/" data-netlify="true" data-netlify-honeypot="bot-field" onSubmit={handleSubmit}>
 
-		<form name="contact" netlify netlify-honeypot="bot-field" hidden>
-			<input type="text" name="name" />
-			<input type="email" name="email" />
-			<textarea name="message"></textarea>
-		</form>
+			<input type="hidden" name="form-name" value="contact" />
+			<p hidden>
+				<label>
+					Don’t fill this out: <input name="bot-field" onChange={handleChange} />
+				</label>
+			</p>
+			<p>
+				<label>
+					Your name:
+					<br />
+					<input type="text" name="name" onChange={handleChange} />
+				</label>
+			</p>
+			<p>
+				<label>
+					Your email:
+					<br />
+					<input type="email" name="email" onChange={handleChange} />
+				</label>
+			</p>
+			<p>
+				<label>
+					Message:
+					<br />
+					<textarea name="message" onChange={handleChange} />
+				</label>
+			</p>
+			<p>
+				<button type="submit">Send</button>
+			</p>
 
 
-		<form name="contact" method="post" netlify>
-          <input type="hidden" name="form-name" value="contact" />
-          <p>
-            <label>Your Name: <input type="text" name="name"/></label>
-          </p>
-          <p>
-            <label>Your Email: <input type="email" name="email"/></label>
-          </p>
-          <p>
-            <label>Message: <textarea name="message"></textarea></label>
-          </p>
-          <p>
-            <button type="submit">Send</button>
-          </p>
-        </form>
+		</>
+		);	
 
-	</>
-);
-
-export default SecondPage;
+		export default SecondPage;
+	</>);
+}
