@@ -7,7 +7,12 @@ module.exports = {
 	},
 	plugins: [
 		`gatsby-plugin-typescript`,
-		`gatsby-plugin-polyfill-io`,
+		{
+		   resolve: `gatsby-plugin-polyfill-io`,
+		   options: {
+			  features: [`Array.prototype.map`, `fetch`, `es2015`,`es2016`,`es2017`,`es2018`,`es5`,`es7`]
+		   },
+		},
 		`gatsby-plugin-react-helmet`,
 		`gatsby-plugin-styled-components`,
 		{
